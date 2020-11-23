@@ -20,13 +20,17 @@ class Home extends React.Component {
       })
   }
 
+  charDetail(id) {
+    console.log('Detail of character with id ' + id)
+  }
+
   render() {
     const { characters } = this.state
     return (
       <React.Fragment>
         <div className="container my-3">
           <h1>Character List</h1>
-          <CharacterList characters={characters} />
+          <CharacterList characters={characters} charDetail={this.charDetail} />
         </div>
       </React.Fragment>
     )

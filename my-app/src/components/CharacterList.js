@@ -2,7 +2,7 @@ import React from 'react'
 
 class CharacterList extends React.Component {
   render() {
-    const { characters } = this.props
+    const { characters, charDetail } = this.props
     return (
       <React.Fragment>
         <div className="row d-flex justify-content-around">
@@ -15,7 +15,7 @@ class CharacterList extends React.Component {
                   <p className="card-text">
                     Status: {char.status}
                   </p>
-                  <button>Details</button>
+                  <button className="btn btn-outline-dark" onClick={() => charDetail(char.id)} >Details</button>
                 </div>
               </div>
             )
