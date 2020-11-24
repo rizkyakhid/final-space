@@ -1,40 +1,34 @@
-import React from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+// import axios from 'axios'
 import CharacterList from '../components/CharacterList'
 
-class Home extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      characters: []
-    }
-  }
+function Home() {
+  const [characters, setCharacters] = useState([])
 
-  componentDidMount() {
-    axios({
-      method: 'get',
-      url: 'https://finalspaceapi.com/api/v0/character'
+  useEffect(() => {
+    fetch('https://finalspaceapi.com/api/v0/character', {
+      method: 'get'
     })
-      .then(({ data }) => {
-        this.setState({ characters: data })
+      .then(res => res.json())
+      .then(charData => {
+        setCharacters(charData)
       })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
+
+  function charDetail(id) {
+    console.log('Fetch detail from: https://finalspaceapi.com/api/v0/character/' + id)
   }
 
-  charDetail(id) {
-    console.log('Detail of character with id ' + id)
-  }
-
-  render() {
-    const { characters } = this.state
-    return (
-      <React.Fragment>
-        <div className="container my-3">
-          <h1>Character List</h1>
-          <CharacterList characters={characters} charDetail={this.charDetail} />
-        </div>
-      </React.Fragment>
-    )
-  }
+  return (
+    <React.Fragment>
+      <div className="container my-3">
+        <CharacterList characters={characters} charDetail={charDetail} />
+      </div>
+    </React.Fragment>
+  )
 }
 
 export default Home
