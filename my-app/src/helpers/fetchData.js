@@ -16,7 +16,20 @@ function useFetch(dataUrl) {
       })
   }, [])
 
-  return [data]
+  function refetch(url) {
+    fetch(url, {
+      method: 'get'
+    })
+      .then(res => res.json())
+      .then(data => {
+        setData(data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  return [data, refetch]
 }
 
 export default useFetch

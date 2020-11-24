@@ -14,7 +14,7 @@ function CharacterList(props) {
                 <p className="card-text">
                   Status: {char.status}
                 </p>
-                <button className="btn btn-outline-light" onClick={() => charDetail(char.id)} >Details</button>
+                <button className="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal" onClick={() => charDetail(char.id)} >Details</button>
               </div>
             </div>
           )

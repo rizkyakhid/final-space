@@ -1,33 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import CharacterList from '../components/CharacterList'
 import useFetch from '../helpers/fetchData'
 
 function Home() {
   const [characters] = useFetch('https://finalspaceapi.com/api/v0/character')
-  const [characterById, setCharacterById] = useState('')
+  const [charDetail, setCharDetail] = useFetch()
 
   useEffect(() => {
-    console.log(characterById)
-  }, [characterById])
+    if(charDetail.length !== 0) console.log(charDetail)
+  }, [charDetail])
 
-  function charDetail(id) {
-    console.log('Fetch detail from: https://finalspaceapi.com/api/v0/character/' + id)
-    fetch('https://finalspaceapi.com/api/v0/character/' + id, {
-      method: 'get'
-    })
-      .then(res => { return res.json() })
-      .then(charData => {
-        setCharacterById(charData)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+  function handleCharDetail(id) {
+    setCharDetail('https://finalspaceapi.com/api/v0/character/' + id)
   }
 
   return (
     <React.Fragment>
       <div className="container my-3">
-        <CharacterList characters={characters} charDetail={charDetail} />
+        <CharacterList characters={characters} charDetail={handleCharDetail} />
       </div>
     </React.Fragment>
   )
