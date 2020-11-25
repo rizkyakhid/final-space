@@ -4,20 +4,20 @@ import useFetch from '../helpers/fetchData'
 
 function Home() {
   const [characters] = useFetch('https://finalspaceapi.com/api/v0/character')
-  const [charDetail, setCharDetail] = useFetch()
+  // const [charDetail, setCharDetail] = useFetch()
 
-  useEffect(() => {
-    if(charDetail.length !== 0) console.log(charDetail)
-  }, [charDetail])
+  // useEffect(() => {
+  //   if(charDetail.length !== 0) console.log(charDetail)
+  // }, [charDetail])
 
-  function handleCharDetail(id) {
-    setCharDetail('https://finalspaceapi.com/api/v0/character/' + id)
-  }
+  // function handleCharDetail(id) {
+  //   setCharDetail('https://finalspaceapi.com/api/v0/character/' + id)
+  // }
 
   return (
     <React.Fragment>
       <div className="container my-3">
-        <CharacterList characters={characters} charDetail={handleCharDetail} />
+        <CharacterList characters={characters}/>
       </div>
     </React.Fragment>
   )

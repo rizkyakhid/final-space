@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function CharacterList(props) {
-  const { characters, charDetail } = props
+  const { characters } = props
   return (
     <React.Fragment>
       <div className="row d-flex justify-content-around">
@@ -14,7 +15,7 @@ function CharacterList(props) {
                 <p className="card-text">
                   Status: {char.status}
                 </p>
-                <button className="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal" onClick={() => charDetail(char.id)} >Details</button>
+                <Link className="btn btn-outline-light" to={`/characters/${char.id}`} >Details</Link>
               </div>
             </div>
           )
