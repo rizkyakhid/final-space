@@ -9,7 +9,9 @@ function CharacterList(props) {
         {characters.map((char) => {
           return (
             <div className="card my-2 bg-dark text-light" key={char.id} style={{ width: '250px' }}>
-              <img src={char.img_url} style={{ width: '248px' }} alt='Char Pic' />
+              <figure className='d-flex justify-content-center'>
+                <img src={char.img_url} style={{ width: '248px', marginTop: '1px', borderRadius: '4px' }} alt='Char Pic' />
+              </figure>
               <div className="card-body">
                 <h5 className="card-title">{char.name}</h5>
                 <p className="card-text">

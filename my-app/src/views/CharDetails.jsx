@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 function CharDetails() {
   const { id } = useParams()
@@ -20,19 +20,19 @@ function CharDetails() {
 
   return (
     <React.Fragment>
-      <div class="container">
-        <div class="row d-flex justify-content-center">
-          <div class="col-4">
-            <div class="card user-card">
-              <div class="card-header">
+      <div className="container">
+        <div className="row d-flex justify-content-center">
+          <div className="col-6">
+            <div className="card user-card bg-dark text-light">
+              <div className="card-header">
                 <h5>Character Details</h5>
               </div>
-              <div class="card-block">
-                <div class="user-image">
-                  <img src={details.img_url} class="img-radius" alt="User-Profile-Image" />
+              <div className="card-block">
+                <div className="user-image">
+                  <img src={details.img_url} className="img-radius" alt="User-Profile-Image" />
                 </div>
-                <h6 class="f-w-600 m-t-25 m-b-10">{details.name}</h6>
-                {/* <p class="text-muted">Active | Male | Born 23.05.1992</p> */}
+                <h6 className="f-w-600 m-t-25 m-b-10">{details.name}</h6>
+                {/* <p className="text-muted">Active | Male | Born 23.05.1992</p> */}
                 <hr />
                 <ul className='text-left' style={{ listStyleType: "none", margin: "0px", padding: "0px" }}>
                   <li>Name<span className='text-muted'><p>{ details.name }</p></span></li>
@@ -41,11 +41,9 @@ function CharDetails() {
                   <li>Origin<span className='text-muted'><p>{ details.origin }</p></span></li>
                   <li>Gender<span className='text-muted'><p>{ details.gender }</p></span></li>
                 </ul>
-                <hr />
-                <div class="row justify-content-center user-social-link">
-                  <div class="col-auto"><a href="#!"><i class="fa fa-facebook text-facebook"></i></a></div>
-                  <div class="col-auto"><a href="#!"><i class="fa fa-twitter text-twitter"></i></a></div>
-                  <div class="col-auto"><a href="#!"><i class="fa fa-dribbble text-dribbble"></i></a></div>
+                <hr className='mb-4' />
+                <div>
+                  <Link className='text-light' to='/'> Home </Link>
                 </div>
               </div>
             </div>
