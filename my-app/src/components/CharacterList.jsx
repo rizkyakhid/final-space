@@ -1,8 +1,18 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { addFavChar } from '../store/actions/addFavChar'
+
 
 function CharacterList(props) {
   const { characters } = props
+
+  const dispatch = useDispatch()
+
+  const handleFavorite = (char) => {
+    dispatch(addFavChar(char))
+  }
+
   return (
     <React.Fragment>
       <div className="row d-flex justify-content-around">
@@ -18,6 +28,7 @@ function CharacterList(props) {
                   Status: {char.status}
                 </p>
                 <Link className="btn btn-outline-light" to={`/characters/${char.id}`} >Details</Link>
+                <button className="btn btn-outline-light mt-2" onClick={() => { handleFavorite(char) }} >Add To Favorites</button>
               </div>
             </div>
           )
