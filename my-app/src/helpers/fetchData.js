@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
+import Swal from 'sweetalert2'
 
-function useFetch(dataUrl, optArray) {
+function useFetch(dataUrl) {
   const [data, setData] = useState([])
 
   useEffect(() => {
@@ -14,7 +15,7 @@ function useFetch(dataUrl, optArray) {
       .catch(err => {
         console.log(err)
       })
-  }, [])
+  }, [dataUrl])
 
   function refetch(url) {
     fetch(url, {
