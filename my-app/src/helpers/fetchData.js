@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import Swal from 'sweetalert2'
 
 function useFetch(dataUrl) {
   const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch(dataUrl, {
@@ -15,22 +15,14 @@ function useFetch(dataUrl) {
       .catch(err => {
         console.log(err)
       })
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false)
+        }, 1000)
+      })
   }, [dataUrl])
 
-  function refetch(url) {
-    fetch(url, {
-      method: 'get'
-    })
-      .then(res => res.json())
-      .then(data => {
-        setData(data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-
-  return [data, refetch]
+  return [data, loading]
 }
 
 export default useFetch

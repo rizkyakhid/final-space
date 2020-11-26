@@ -1,4 +1,12 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Barlow Condensed', sans-serif;
   margin-top:20px;
   background:#f3f3f3;
 }
@@ -16,7 +24,7 @@ body{
   -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
   box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
   border: none;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
@@ -29,7 +37,6 @@ body{
 
 .card .card-header h5 {
   margin-bottom: 0;
-  font-size: 14px;
   font-weight: 600;
   display: inline-block;
   margin-right: 10px;
