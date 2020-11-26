@@ -18,7 +18,7 @@ function CharacterList(props) {
   return (
     <React.Fragment>
       <div className="col-3">
-        <div className="card my-2 bg-danger text-light" key={char.id} style={{ width: '250px' }}>
+        <div className="shadow card my-2 bg-danger text-light" key={char.id} style={{ width: '250px' }}>
           <figure className='d-flex justify-content-center'>
             <img src={char.img_url} style={{ width: '248px', marginTop: '1px', borderRadius: '4px' }} alt='Char Pic' />
           </figure>
