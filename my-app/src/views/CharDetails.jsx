@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import useFetch from '../helpers/fetchData'
+// import useFetch from '../helpers/fetchData'
 import LoadingSpinner from '../components/LoadingSpinner'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchIndividualCharacters } from '../store/actions/charAct'
 
 function CharDetails() {
   const { id } = useParams()
-  const [details, loading] = useFetch(`https://finalspaceapi.com/api/v0/character/${id}`)
+  // const [details, loading] = useFetch(`https://finalspaceapi.com/api/v0/character/${id}`)
+  const details = useSelector(({ characters }) => characters.details)
+  const loading = useSelector(({ characters }) => characters.detailsLoading)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchIndividualCharacters(id))
+  }, [dispatch, id])
 
   if (loading) {
     return (

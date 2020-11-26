@@ -5,11 +5,9 @@ import CharacterList from '../components/CharacterList'
 import LoadingSpinner from "../components/LoadingSpinner"
 
 function FavChar() {
+  const favChar = useSelector(({ favChar }) => favChar.list)
 
-  const favChar = useSelector((state) => state.favChar)
-  console.log(favChar.length)
-
-  if(!favChar) {
+  if (!favChar) {
     <LoadingSpinner></LoadingSpinner>
   }
 
@@ -17,7 +15,13 @@ function FavChar() {
     <React.Fragment>
       <div className="container my-3">
         <Link to="/" className='btn btn-danger mb-2'>Home</Link>
-        <CharacterList characters={favChar}></CharacterList>
+        <div className="row">
+          {favChar.map(char => {
+            return (
+              <CharacterList char={char}></CharacterList>
+            )
+          })}
+        </div>
       </div>
     </React.Fragment>
   )
