@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addFavChar } from '../store/actions/addFavChar'
+import Swal from 'sweetalert2';
 
 
 function CharacterList(props) {
@@ -11,6 +12,7 @@ function CharacterList(props) {
 
   const handleFavorite = (char) => {
     dispatch(addFavChar(char))
+    Swal.fire('Successfull', `You've added ${char.name} to favorite list!`, 'success')
   }
 
   return (
@@ -24,7 +26,7 @@ function CharacterList(props) {
                   <img src={char.img_url} style={{ width: '248px', marginTop: '1px', borderRadius: '4px' }} alt='Char Pic' />
                 </figure>
                 <div className="card-body">
-                  <h5 className="card-title">{char.name}</h5>
+                  <h5 className="card-title"><strong>{char.name}</strong></h5>
                   <p className="card-text">
                     Status: {char.status}
                   </p>

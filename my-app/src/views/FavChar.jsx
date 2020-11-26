@@ -7,6 +7,7 @@ import LoadingSpinner from "../components/LoadingSpinner"
 function FavChar() {
 
   const favChar = useSelector((state) => state.favChar)
+  console.log(favChar.length)
 
   if(!favChar) {
     <LoadingSpinner></LoadingSpinner>
